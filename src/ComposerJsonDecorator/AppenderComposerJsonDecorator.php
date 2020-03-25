@@ -45,6 +45,15 @@ final class AppenderComposerJsonDecorator implements ComposerJsonDecoratorInterf
             if ($key === 'repositories') {
                 $composerJson[$key] = array_unique($composerJson[$key], SORT_REGULAR);
             }
+
+            // fix unique scripts
+            if ($key === 'scripts') {
+                foreach ($composerJson[$key] as $scriptKey => $scriptArray) {
+                    if (is_array($scriptArray)) {
+                        $composerJson[$key][$scriptKey] = array_unique($composerJson[$key][$scriptKey], SORT_REGULAR);
+                    }
+                }
+            }
         }
 
         // add what was skipped
