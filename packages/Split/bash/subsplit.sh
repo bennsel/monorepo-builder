@@ -110,7 +110,7 @@ function publish()
 
     split_branch
     split_tag
-    rm -rf ${FROM_DIRECTORY}
+    rm -rf ${PWD}
 }
 
 function split_branch()
